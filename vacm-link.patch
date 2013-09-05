@@ -1,0 +1,14 @@
+--- vacm-2.0.5a/libvacmclient/Makefile.am.orig	2000-04-27 04:17:52.000000000 +0200
++++ vacm-2.0.5a/libvacmclient/Makefile.am	2013-09-05 21:37:16.489367080 +0200
+@@ -5,9 +5,10 @@
+ libvacmclient_la_SOURCES = connections.c
+ libvacmclient_la_DEPENDENCIES = $(srcdir)/include/vacmclient_api.h $(srcdir)/include/nexxus_connection.h
+ libvacmclient_la_LDFLAGS = -release $(VERSION)
++libvacmclient_la_LIBADD = $(SSL_LIBS)
+ 
+ INCLUDES = -I$(srcdir)/include -I. -I$(top_srcdir) -I.. -I$(includedir) -I$(prefix)/include $(X_CFLAGS)
+-LDADD = -L$(libdir) -L$(prefix)/lib $(THREAD_LIBS) $(MOD_LIBS) $(LIBS)
++LDADD = $(THREAD_LIBS) $(MOD_LIBS) $(LIBS)
+ 
+ EXTRA_DIST = include/vacmclient_api.h include/nexxus_connection.h
+ 

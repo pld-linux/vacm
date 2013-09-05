@@ -18,6 +18,7 @@ Source0:	http://downloads.sourceforge.net/vacm/%{name}-%{version}.tar.gz
 # Source0-md5:	8c68f51bded2a6c268e899013d6420f3
 Patch0:		%{name}-build.patch
 Patch1:		%{name}-sh.patch
+Patch2:		%{name}-link.patch
 URL:		http://vacm.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -28,6 +29,7 @@ BuildRequires:	gettext-devel
 %{?with_gnome1:BuildRequires:	gnome-libs-devel}
 %{?with_gnome1:BuildRequires:	imlib-devel}
 BuildRequires:	libstdc++-devel
+BuildRequires:	libtool
 BuildRequires:	ncurses-devel
 BuildRequires:	openjade
 BuildRequires:	openssl-devel
@@ -225,7 +227,7 @@ install packaging/RedHat/vacm-logrotate $RPM_BUILD_ROOT/etc/logrotate.d/vacm
 install packaging/RedHat/vacm.sysconfig $RPM_BUILD_ROOT/etc/sysconfig/vacm
 
 # no external dependencies
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/lib*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libloose.la
 
 %find_lang flim
 
@@ -280,17 +282,11 @@ fi
 %attr(755,root,root) %{_libdir}/libloose-%{version}.so
 %attr(755,root,root) %{_libdir}/libvacmclient-%{version}.so
 
-%files node
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_sbindir}/vacm_sys_stat_proxy
-%attr(755,root,root) %{_sbindir}/vacm_sys_statd
-%attr(755,root,root) %{_sbindir}/vacm_user_admd
-%attr(754,root,root) /etc/rc.d/init.d/vacm-node
-
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libloose.so
 %attr(755,root,root) %{_libdir}/libvacmclient.so
+%{_libdir}/libvacmclient.la
 %{_includedir}/libloose.h
 %{_includedir}/vacmclient_api.h
 
@@ -298,6 +294,13 @@ fi
 %defattr(644,root,root,755)
 %{_libdir}/libloose.a
 %{_libdir}/libvacmclient.a
+
+%files node
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_sbindir}/vacm_sys_stat_proxy
+%attr(755,root,root) %{_sbindir}/vacm_sys_statd
+%attr(755,root,root) %{_sbindir}/vacm_user_admd
+%attr(754,root,root) /etc/rc.d/init.d/vacm-node
 
 %if %{with gtk1}
 %files flim -f flim.lang
