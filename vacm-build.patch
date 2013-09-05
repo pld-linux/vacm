@@ -1,0 +1,305 @@
+--- vacm-2.0.5a/clients/flim/src/group.c.orig	2000-08-08 00:34:44.000000000 +0200
++++ vacm-2.0.5a/clients/flim/src/group.c	2013-09-03 21:27:20.023310507 +0200
+@@ -55,7 +55,7 @@
+ 			 }
+ 		    }
+ 	       }
+-	     done:	     
++	     done: ;
+ 	  }
+ 	else if (next_nexxus)
+ 	  {
+--- vacm-2.0.5a/clients/flim/plugins/toolbar.p.c.orig	2001-04-20 20:15:01.000000000 +0200
++++ vacm-2.0.5a/clients/flim/plugins/toolbar.p.c	2013-09-04 17:45:31.903576463 +0200
+@@ -395,7 +395,7 @@
+ 		       FILM_COMMS_GET_REPLY;
+ 		    }
+ 		  FILM_COMMS_REPLY_END;
+-		  error:
++		  error: ;
+ 	       }
+ 	  }
+      }
+@@ -445,7 +445,7 @@
+ 		       FILM_COMMS_GET_REPLY;
+ 		    }
+ 		  FILM_COMMS_REPLY_END;
+-		  error:
++		  error: ;
+ 	       }
+ 	  }
+      }
+@@ -555,7 +555,7 @@
+ 		       FILM_COMMS_GET_REPLY;
+ 		    }
+ 		  FILM_COMMS_REPLY_END;
+-		  error:
++		  error: ;
+ 	       }
+ 	  }
+      }
+@@ -601,7 +601,7 @@
+ 		       FILM_COMMS_GET_REPLY;
+ 		    }
+ 		  FILM_COMMS_REPLY_END;
+-		  error:
++		  error: ;
+ 	       }
+ 	  }
+      }
+--- vacm-2.0.5a/clients/hoover/libgessie/PanelContainer.C.orig	2000-11-28 23:18:14.000000000 +0100
++++ vacm-2.0.5a/clients/hoover/libgessie/PanelContainer.C	2013-09-04 21:08:55.353064333 +0200
+@@ -200,8 +200,8 @@
+         PanelContainer *newRootNotebook = new PanelContainer();
+         gtk_table_attach(GTK_TABLE(rootTable),newRootNotebook->baseWidget(),
+                          0,1,0,1,
+-                         (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
+-                         (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND),0,0);
++                         (GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
++                         (GtkAttachOptions)(GTK_FILL|GTK_EXPAND),0,0);
+ 
+ 		/*
+ 		 *	Do the movin'
+@@ -253,7 +253,7 @@
+ 	gtk_drag_source_set(event_box,GDK_BUTTON1_MASK,
+ 			    panel_container_target_table, 
+ 			    n_panel_container_targets,
+-			    (enum GdkDragAction) (GDK_ACTION_MOVE | GDK_ACTION_COPY));
++			    (GdkDragAction) (GDK_ACTION_MOVE | GDK_ACTION_COPY));
+ 	gtk_signal_connect(GTK_OBJECT(event_box), "drag_begin",
+                       	   GTK_SIGNAL_FUNC (drag_begin_callback),
+                       	   (gpointer) w);
+@@ -272,14 +272,14 @@
+ 	gtk_widget_show(icon);
+ 
+ 	gtk_table_attach(GTK_TABLE(table),icon,0,1,0,1,
+-			 (enum GtkAttachOptions)(GTK_FILL),
+-			 (enum GtkAttachOptions)(GTK_FILL),0,0);
++			 (GtkAttachOptions)(GTK_FILL),
++			 (GtkAttachOptions)(GTK_FILL),0,0);
+ 
+ 	GtkWidget *label = gtk_label_new(name);
+ 	gtk_widget_show(label);
+ 	gtk_table_attach(GTK_TABLE(table),label,1,2,0,1,
+-			 (enum GtkAttachOptions)(GTK_FILL),
+-			 (enum GtkAttachOptions)(GTK_FILL),0,0);
++			 (GtkAttachOptions)(GTK_FILL),
++			 (GtkAttachOptions)(GTK_FILL),0,0);
+ 	gtk_widget_show(table);
+ 	gtk_widget_show(toptable);
+ 
+@@ -302,8 +302,8 @@
+ 	gtk_object_set_data((GtkObject *) event_box,	"panel",(gpointer) p);
+         gtk_object_set_data((GtkObject *) w,		"panel",(gpointer) p);
+ 	gtk_table_attach(GTK_TABLE(toptable),event_box,0,1,0,1,
+-			 (enum GtkAttachOptions)(GTK_FILL),
+-			 (enum GtkAttachOptions)(GTK_FILL),0,0);
++			 (GtkAttachOptions)(GTK_FILL),
++			 (GtkAttachOptions)(GTK_FILL),0,0);
+ 
+ 	if (pos == -1) {
+ 		gtk_notebook_append_page((GtkNotebook *) theBaseWidget, w,
+--- vacm-2.0.5a/clients/hoover/libgessie/GenericListPanel.C.orig	2000-08-05 00:14:34.000000000 +0200
++++ vacm-2.0.5a/clients/hoover/libgessie/GenericListPanel.C	2013-09-04 21:09:56.203061780 +0200
+@@ -55,8 +55,8 @@
+                                               theContentWidget);
+ 
+         gtk_table_attach(GTK_TABLE(theBaseWidget),scrollw,0,1,0,1,
+-			 (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND), 
+-			 (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND),0,0);
++			 (GtkAttachOptions)(GTK_FILL|GTK_EXPAND), 
++			 (GtkAttachOptions)(GTK_FILL|GTK_EXPAND),0,0);
+ 	gtk_widget_show(theContentWidget);
+ }
+ 
+--- vacm-2.0.5a/clients/hoover/libgessie/GenericTextPanel.C.orig	2000-09-16 09:39:22.000000000 +0200
++++ vacm-2.0.5a/clients/hoover/libgessie/GenericTextPanel.C	2013-09-04 21:10:26.023060528 +0200
+@@ -53,8 +53,8 @@
+ 	assert(scrollw != NULL);
+ 
+         gtk_table_attach(GTK_TABLE(theBaseWidget),scrollw,0,1,0,1,
+-			 (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND), 
+-			 (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND),0,0);
++			 (GtkAttachOptions)(GTK_FILL|GTK_EXPAND), 
++			 (GtkAttachOptions)(GTK_FILL|GTK_EXPAND),0,0);
+ 
+ 	/*
+ 	 *	Simple Text File
+--- vacm-2.0.5a/clients/hoover/libgessie/GenericTreePanel.C.orig	2000-08-02 09:19:43.000000000 +0200
++++ vacm-2.0.5a/clients/hoover/libgessie/GenericTreePanel.C	2013-09-04 21:10:52.553059415 +0200
+@@ -59,8 +59,8 @@
+ 					      theContentWidget);
+ 
+ 	gtk_table_attach(GTK_TABLE(theBaseWidget),scrollw,0,1,0,1,
+-			 (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
+-			 (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
++			 (GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
++			 (GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
+ 			 0,0);
+ }
+ 
+--- vacm-2.0.5a/clients/hoover/hoover.C.orig	2000-09-29 06:57:26.000000000 +0200
++++ vacm-2.0.5a/clients/hoover/hoover.C	2013-09-04 21:13:20.593053202 +0200
+@@ -349,8 +349,8 @@
+ 
+ 	theRootMenuBar = gsInitMainMenus(nHooverMenuItems,HooverMenuItems);
+         gtk_table_attach(GTK_TABLE(theRootTable),theRootMenuBar,0,1,0,1,
+-			 (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
+-			 (enum GtkAttachOptions)(GTK_FILL),0,0);
++			 (GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
++			 (GtkAttachOptions)(GTK_FILL),0,0);
+ 
+ 
+ 	/*------------------------------------------------------*
+@@ -362,8 +362,8 @@
+ 				   FALSE);
+ 	gtk_table_attach(GTK_TABLE(theRootTable),theRootNotebook->baseWidget(),
+ 			 0,1,1,2,
+-			 (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
+-			 (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND),0,0);
++			 (GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
++			 (GtkAttachOptions)(GTK_FILL|GTK_EXPAND),0,0);
+ 
+ 	/*------------------------------------------------------*
+ 	 *                   STATUS BAR                         *
+@@ -373,8 +373,8 @@
+         gtk_widget_show(hbox);
+ 
+ 	gtk_table_attach(GTK_TABLE(theRootTable),hbox,0,1,2,3,
+-			 (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
+-			 (enum GtkAttachOptions)(GTK_FILL),0,0);
++			 (GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
++			 (GtkAttachOptions)(GTK_FILL),0,0);
+ 
+ 	theRootProgressBar = gtk_progress_bar_new();
+ 	gtk_widget_set_usize(theRootProgressBar,100,-1);
+--- vacm-2.0.5a/clients/hoover/node_prop.C.orig	2000-09-05 20:11:57.000000000 +0200
++++ vacm-2.0.5a/clients/hoover/node_prop.C	2013-09-04 21:13:50.143051963 +0200
+@@ -320,7 +320,7 @@
+         gtk_container_set_border_width(GTK_CONTAINER (hbox),0);
+         gtk_widget_show(hbox);
+         gtk_table_attach(GTK_TABLE(table),hbox,0,2,vertPos,vertPos+1,
+-                         (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
++                         (GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
+ 			 GTK_SHRINK,0,0);
+ 
+ 	apply = gtk_button_new_with_label("Apply");
+--- vacm-2.0.5a/clients/hoover/MainListPanel.C.orig	2000-10-08 11:12:53.000000000 +0200
++++ vacm-2.0.5a/clients/hoover/MainListPanel.C	2013-09-04 21:14:24.459717188 +0200
+@@ -81,8 +81,8 @@
+ 					      theContentWidget);
+ 
+ 	gtk_table_attach(GTK_TABLE(theBaseWidget),scrollw,0,1,0,1,
+-			 (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
+-			 (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
++			 (GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
++			 (GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
+ 			 0,0);
+ 
+ 	/*--------------------------------------------------------------*
+@@ -93,7 +93,7 @@
+ 	gtk_container_set_border_width (GTK_CONTAINER (hbox), 0);
+ 	gtk_widget_show (hbox);
+ 	gtk_table_attach(GTK_TABLE(theBaseWidget),hbox,0,1,1,2,
+-			 (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
++			 (GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
+ 			 GTK_SHRINK, 0,0);
+ 
+ #define BUTTON_PAD      1
+--- vacm-2.0.5a/clients/hoover/SELListPanel.C.orig	2000-10-08 22:13:34.000000000 +0200
++++ vacm-2.0.5a/clients/hoover/SELListPanel.C	2013-09-04 21:14:52.146382694 +0200
+@@ -124,8 +124,8 @@
+ 	assert(scrollw != NULL);
+ 
+         gtk_table_attach(GTK_TABLE(theBaseWidget),scrollw,0,1,0,1,
+-			 (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND), 
+-			 (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND),0,0);
++			 (GtkAttachOptions)(GTK_FILL|GTK_EXPAND), 
++			 (GtkAttachOptions)(GTK_FILL|GTK_EXPAND),0,0);
+ 
+ 	if (logType == EV_LOG_TEXT) {
+ 		/*
+--- vacm-2.0.5a/clients/hoover/HooverControl.C.orig	2000-03-31 12:14:08.000000000 +0200
++++ vacm-2.0.5a/clients/hoover/HooverControl.C	2013-09-04 21:15:17.499714962 +0200
+@@ -60,8 +60,8 @@
+ 	topPane = gtk_vpaned_new();
+ 	gtk_widget_show(topPane);
+ 	gtk_table_attach(GTK_TABLE(theBaseWidget),topPane,0,1,1,2,
+-			 (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
+-			 (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND),0,0);
++			 (GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
++			 (GtkAttachOptions)(GTK_FILL|GTK_EXPAND),0,0);
+ 
+ 	pane = gtk_vpaned_new();
+ 	gtk_widget_show(pane);
+--- vacm-2.0.5a/clients/hoover/PropListPanel.C.orig	2000-03-31 12:14:08.000000000 +0200
++++ vacm-2.0.5a/clients/hoover/PropListPanel.C	2013-09-04 21:15:39.693047366 +0200
+@@ -125,8 +125,8 @@
+ 	assert(scroller != NULL);
+ 
+         gtk_table_attach(GTK_TABLE(theBaseWidget),scroller,0,1,0,1,
+-			 (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND), 
+-			 (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND),0,0);
++			 (GtkAttachOptions)(GTK_FILL|GTK_EXPAND), 
++			 (GtkAttachOptions)(GTK_FILL|GTK_EXPAND),0,0);
+ 
+ 		/*------------------------------*
+ 		 *		CLIST		*
+--- vacm-2.0.5a/clients/hoover/SENSListPanel.C.orig	2000-09-08 17:27:20.000000000 +0200
++++ vacm-2.0.5a/clients/hoover/SENSListPanel.C	2013-09-04 21:25:14.506356576 +0200
+@@ -109,8 +109,8 @@
+ 	assert(scrollw != NULL);
+ 
+         gtk_table_attach(GTK_TABLE(theBaseWidget),scrollw,0,1,0,1,
+-			 (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND), 
+-			 (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND),0,0);
++			 (GtkAttachOptions)(GTK_FILL|GTK_EXPAND), 
++			 (GtkAttachOptions)(GTK_FILL|GTK_EXPAND),0,0);
+ 
+ 		/*------------------------------*
+ 		 *		CLIST		*
+--- vacm-2.0.5a/clients/hoover/Auth.C.orig	2000-07-07 20:28:16.000000000 +0200
++++ vacm-2.0.5a/clients/hoover/Auth.C	2013-09-04 21:26:58.293018886 +0200
+@@ -30,18 +30,18 @@
+ 
+ #define	ADD_TO_TABLE(a)		\
+ 	gtk_table_attach(GTK_TABLE(table),a,0,1,vPos,vPos+1,	\
+-			 (enum GtkAttachOptions)(GTK_FILL | GTK_EXPAND), \
+-			 (enum GtkAttachOptions)(GTK_FILL | GTK_EXPAND),0,0)
++			 (GtkAttachOptions)(GTK_FILL | GTK_EXPAND), \
++			 (GtkAttachOptions)(GTK_FILL | GTK_EXPAND),0,0)
+ 
+ #define	ADD_TO_TABLE2(a,b)	\
+ 	gtk_table_attach(GTK_TABLE(table),a,b,b+1,vPos,vPos+1,	\
+-			 (enum GtkAttachOptions)(GTK_FILL | GTK_EXPAND), \
+-			 (enum GtkAttachOptions)(GTK_FILL | GTK_EXPAND),0,0)
++			 (GtkAttachOptions)(GTK_FILL | GTK_EXPAND), \
++			 (GtkAttachOptions)(GTK_FILL | GTK_EXPAND),0,0)
+ 
+ #define	ADD_TO_TABLE3(a,b,c)	\
+ 	gtk_table_attach(GTK_TABLE(table),a,b,c,vPos,vPos+1,	\
+-			 (enum GtkAttachOptions)(GTK_FILL | GTK_EXPAND), \
+-			 (enum GtkAttachOptions)(GTK_FILL | GTK_EXPAND),0,0)
++			 (GtkAttachOptions)(GTK_FILL | GTK_EXPAND), \
++			 (GtkAttachOptions)(GTK_FILL | GTK_EXPAND),0,0)
+ 
+ #define	SET_DATA	gtk_object_set_data
+ #define	GET_DATA(a,b)	gtk_object_get_data(GTK_OBJECT(a),b)
+@@ -534,7 +534,7 @@
+         gtk_container_set_border_width (GTK_CONTAINER (hbox1), 0);
+         gtk_widget_show (hbox1);
+         gtk_table_attach(GTK_TABLE(table),hbox1,0,2,vPos,vPos+1,
+-                         (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
++                         (GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
+                          GTK_SHRINK, 0,0);
+ 
+ 	MK_BUTTON(hbox1,tmp->add_admin,"Add Admin",   doAdminAction,tmp);
+@@ -583,7 +583,7 @@
+         gtk_container_set_border_width (GTK_CONTAINER (hbox2), 0);
+         gtk_widget_show (hbox2);
+         gtk_table_attach(GTK_TABLE(table),hbox2,0,2,vPos,vPos+1,
+-                         (enum GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
++                         (GtkAttachOptions)(GTK_FILL|GTK_EXPAND),
+                          GTK_SHRINK, 0,0);
+ 
+ 	MK_BUTTON(hbox2,tmp->add_addr_rule,"Add Address Rule",doRuleAction,tmp);

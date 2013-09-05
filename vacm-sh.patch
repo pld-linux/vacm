@@ -1,0 +1,21 @@
+--- vacm-2.0.5a/configure.in.orig	2001-10-03 15:53:18.000000000 +0200
++++ vacm-2.0.5a/configure.in	2013-09-05 21:19:46.269411152 +0200
+@@ -75,7 +75,8 @@
+ fi
+ 
+ if test "x$BUILD_DOCS" = "x1"; then
+-	pushd ${srcdir}/tests
++	oldpwd="$(pwd)"
++	cd ${srcdir}/tests
+ 	db2dvi docbook-test.sgml 2>&1 | \
+ 	egrep -q "cannot generate system identifier for public text"
+ 	if [ test "x$?" = "x0" ]; then
+@@ -84,7 +85,7 @@
+ 		AC_MSG_WARN(Your stylesheets are probably installed incorrectly.)
+ 	fi
+ 	rm -f docbook-test.aux docbook-test.dvi docbook-test.log docbook-test.tex
+-	popd
++	cd "$oldpwd"
+ fi
+ 
+ 
