@@ -188,6 +188,7 @@ Dokumentacja do VACM-a.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %{__sed} -i -e 's///g' nexxus/nexxus_modules/emp/include/iana_list.h
 
