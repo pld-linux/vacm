@@ -23,7 +23,7 @@ URL:		http://vacm.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	docbook-utils
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 %{?with_gtk1:BuildRequires:	gtk+-devel >= 1.2.6}
 # libzvt component
 %{?with_gnome1:BuildRequires:	gnome-libs-devel}
