@@ -1,0 +1,10 @@
+--- vacm-2.0.5a/docs/Makefile.am.orig	2000-08-26 14:03:43.000000000 +0000
++++ vacm-2.0.5a/docs/Makefile.am	2015-01-04 10:02:34.960045560 +0000
+@@ -51,6 +51,7 @@
+ 		newsum="`cat .ps.sum`"; \
+ 		if ! test "$$oldsum" = "$$newsum" || ! test -f vacm_manual.ps.gz; then \
+ 			db2ps $(sgml_file); \
++			dvips vacm_manual.dvi -o vacm_manual.ps; \
+ 			rm -f vacm_manual.ps.gz; \
+ 			gzip vacm_manual.ps; \
+ 		fi; \
