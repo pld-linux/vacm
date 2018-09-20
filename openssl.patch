@@ -1,0 +1,44 @@
+--- vacm-2.0.5a/nexxus/nexxus_modules/sys_stat/vacm_sys_stat_proxy.c~	2001-04-05 18:40:55.000000000 +0200
++++ vacm-2.0.5a/nexxus/nexxus_modules/sys_stat/vacm_sys_stat_proxy.c	2018-09-20 18:37:55.547099196 +0200
+@@ -190,7 +190,7 @@ char	**argv;
+     printf("Private key does not match the certificate public key\n");
+ 		exit(-1);
+     }
+-  meth = SSLv2_client_method();
++  meth = SSLv23_client_method();
+   client_ctx = SSL_CTX_new(meth);
+   if (!client_ctx)
+     {
+--- vacm-2.0.5a/libvacmclient/connections.c~	2001-10-03 15:36:27.000000000 +0200
++++ vacm-2.0.5a/libvacmclient/connections.c	2018-09-20 18:38:11.114233001 +0200
+@@ -135,7 +135,7 @@ int api_nexxus_connect(char *addr,
+ 	if (!ctx)
+ 		{
+ 		SSLeay_add_ssl_algorithms();
+-		meth = SSLv2_client_method();
++		meth = SSLv23_client_method();
+ 		SSL_load_error_strings();
+ 		ctx = SSL_CTX_new(meth);
+ 		}
+--- vacm-2.0.5a/nexxus/nexxus_modules/sys_stat/sys_stat.c~	2000-09-01 17:36:25.000000000 +0200
++++ vacm-2.0.5a/nexxus/nexxus_modules/sys_stat/sys_stat.c	2018-09-20 18:38:23.084592208 +0200
+@@ -103,7 +103,7 @@ char	**argv;
+ #ifdef OPENSSL
+   SSL_load_error_strings();
+ 	SSLeay_add_ssl_algorithms();
+-  meth = SSLv2_client_method();
++  meth = SSLv23_client_method();
+   ctx = SSL_CTX_new(meth);
+ 	if (!ctx)
+ 		{
+--- vacm-2.0.5a/nexxus/nexxus_modules/user_adm/user_adm.c~	2001-02-28 05:20:55.000000000 +0100
++++ vacm-2.0.5a/nexxus/nexxus_modules/user_adm/user_adm.c	2018-09-20 18:38:33.418235634 +0200
+@@ -94,7 +94,7 @@ char	**argv;
+ 		}
+ 
+ 	SSLeay_add_ssl_algorithms();
+-  meth = SSLv2_client_method();
++  meth = SSLv23_client_method();
+   SSL_load_error_strings();
+   ctx = SSL_CTX_new(meth);
+ 	if (!ctx)
