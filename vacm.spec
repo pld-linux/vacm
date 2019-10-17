@@ -11,7 +11,7 @@ Summary:	System for monitoring and management of a cluster of nodes
 Summary(pl.UTF-8):	System do monitorowania i zarządzania klastrem węzłów
 Name:		vacm
 Version:	2.0.5a
-Release:	6
+Release:	7
 License:	LGPL v2.1+ (library), GPL v2+ (the rest)
 Group:		Applications/System
 Source0:	http://downloads.sourceforge.net/vacm/%{name}-%{version}.tar.gz
