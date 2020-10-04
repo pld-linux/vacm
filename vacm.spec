@@ -219,6 +219,7 @@ cd ../..
 	--enable-pam \
 	--enable-ssl \
 	--enable-static \
+	%{!?with_gtk1:--without-flim} \
 	%{!?with_gnome1:--without-hoover}
 %{__make}
 
@@ -239,7 +240,7 @@ install packaging/RedHat/vacm.sysconfig $RPM_BUILD_ROOT/etc/sysconfig/vacm
 # no external dependencies
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libloose.la
 
-%find_lang flim
+%{?with_gtk1:%find_lang flim}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
