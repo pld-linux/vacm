@@ -11,7 +11,7 @@ Summary:	System for monitoring and management of a cluster of nodes
 Summary(pl.UTF-8):	System do monitorowania i zarządzania klastrem węzłów
 Name:		vacm
 Version:	2.0.5a
-Release:	7
+Release:	8
 License:	LGPL v2.1+ (library), GPL v2+ (the rest)
 Group:		Applications/System
 Source0:	http://downloads.sourceforge.net/vacm/%{name}-%{version}.tar.gz
@@ -22,6 +22,7 @@ Patch2:		%{name}-link.patch
 Patch3:		dvips.patch
 Patch4:		openssl.patch
 Patch5:		%{name}-gettext.patch
+Patch6:		glibc.patch
 URL:		http://vacm.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -39,6 +40,7 @@ BuildRequires:	openssl-devel
 BuildRequires:	pam-devel
 BuildRequires:	readline-devel
 BuildRequires:	texlive-dvips
+BuildRequires:	texlive-jadetex
 BuildRequires:	texlive-latex-marvosym
 BuildRequires:	texlive-latex-ams
 BuildRequires:	texlive-latex-extend
@@ -198,6 +200,7 @@ Dokumentacja do VACM-a.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %{__sed} -i -e 's///g' nexxus/nexxus_modules/emp/include/iana_list.h
 

@@ -1,0 +1,11 @@
+--- vacm-2.0.5a/nexxus/nexxus_modules/emp/emp_thread.c~	2001-04-18 19:24:03.000000000 +0200
++++ vacm-2.0.5a/nexxus/nexxus_modules/emp/emp_thread.c	2021-10-03 20:47:32.777366614 +0200
+@@ -774,7 +774,7 @@
+     }
+ 	/* Initialize the lock mutex */
+ 	pthread_mutexattr_init(&mutex_attr);
+-	pthread_mutexattr_setkind_np(&mutex_attr, PTHREAD_MUTEX_ERRORCHECK_NP);
++	pthread_mutexattr_settype(&mutex_attr, PTHREAD_MUTEX_ERRORCHECK_NP);
+ 
+ 	return(0);
+ }
