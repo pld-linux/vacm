@@ -26,6 +26,7 @@ Patch6:		glibc.patch
 URL:		http://vacm.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	docbook-dtd31-sgml
 BuildRequires:	docbook-utils
 BuildRequires:	gettext-tools
 %{?with_gtk1:BuildRequires:	gtk+-devel >= 1.2.6}
